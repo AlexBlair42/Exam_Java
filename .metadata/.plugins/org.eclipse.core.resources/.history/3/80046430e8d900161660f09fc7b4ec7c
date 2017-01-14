@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.regex.*;
+import java.io.*;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+		ArrayList<String> shapes = new ArrayList<String>();
+        try (FileInputStream is = new FileInputStream("c:/Users/ablair18/Desktop/shapes.txt")) {
+            InputStreamReader ir = new InputStreamReader(is);
+            BufferedReader rdr = new BufferedReader(ir);
+            String line;
+            while ((line = rdr.readLine())!= null) {
+                shapes.add(line);    
+            	System.out.printf("shape: %s\n", line);
+                    
+            }
+        }
+        catch (Exception ex) { System.out.printf("Failed for %s\n", "shapes.txt");}
+
+	}
+
+}

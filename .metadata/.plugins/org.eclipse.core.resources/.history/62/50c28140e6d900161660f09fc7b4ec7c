@@ -1,0 +1,9 @@
+
+public class Circle implements Shape {
+	
+	toString(){return String;}
+	getKind(){return kind;}
+	getDetailString(){return details;}
+	getID(){return ID;}
+
+}

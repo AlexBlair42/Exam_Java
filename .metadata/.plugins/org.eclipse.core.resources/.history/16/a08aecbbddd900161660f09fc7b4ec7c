@@ -1,0 +1,24 @@
+import java.util.regex.*;
+import java.io.*;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+        try (FileInputStream is = new FileInputStream("c:/Users/ablair18/Desktop/shapes.txt")) {
+            InputStreamReader ir = new InputStreamReader(is);
+            BufferedReader rdr = new BufferedReader(ir);
+            String line = rdr.readLine();
+            while (line != null) {
+                Pattern shapes = Pattern.compile("\"(.*?)\"");
+                Matcher matcher = shapes.matcher(line);
+                if (matcher.find())
+                    System.out.printf("shape: %s\n", line);
+                line = rdr.readLine();
+            }
+
+        }
+        catch (Exception ex) { System.out.printf("Failed for %s\n", "shapes.txt");}
+
+	}
+
+}

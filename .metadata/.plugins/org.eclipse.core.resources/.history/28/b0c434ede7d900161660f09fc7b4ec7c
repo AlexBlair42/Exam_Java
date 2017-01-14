@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class Circle implements Shape {
+	
+	String kind;
+
+	@Override
+	public String getKind(String kind) {
+		return null;
+	}
+
+	@Override
+	public String getDetailString() {
+		return null;
+	}
+
+	@Override
+	public int getID() {
+		for (int i = 0; i < )
+		return 0;
+	}
+	
+
+
+}

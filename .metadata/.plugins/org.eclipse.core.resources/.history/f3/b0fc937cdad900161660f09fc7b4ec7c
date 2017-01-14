@@ -1,0 +1,12 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class UI extends JComponent {
+	JFrame frame; 
+	{
+	frame = new JFrame();
+	frame.setBounds(300,300,300,300);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setVisible(true);
+	}
+}

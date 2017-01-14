@@ -1,0 +1,14 @@
+
+public class Circle implements Shape {
+	String details;
+	String kind;
+	int ID;
+	
+	String toString(){return String;}
+	String getKind(){
+		kind		 
+	}
+	String getDetailString(){return details;}
+	int getID(){return ID;}
+
+}

@@ -1,0 +1,24 @@
+import java.util.regex.*;
+import java.io.*;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+        try (FileInputStream is = new FileInputStream("shapes.txt")) {
+            InputStreamReader ir = new InputStreamReader(is);
+            BufferedReader rdr = new BufferedReader(ir);
+            String line = rdr.readLine();
+            while (line != null) {
+                Pattern email = Pattern.compile("\"circle:(.*?)\"");
+                Matcher matcher = email.matcher(line);
+                if (matcher.find())
+                    System.out.printf("email: %s\n", matcher.group(1));
+                line = rdr.readLine();
+            }
+
+        }
+        catch (Exception ex) { System.out.printf("Failed for %s\n", "shapes.txt");}
+
+	}
+
+}

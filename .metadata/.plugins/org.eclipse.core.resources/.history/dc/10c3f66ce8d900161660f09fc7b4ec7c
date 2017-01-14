@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+import java.util.regex.*;
+import java.io.*;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+		
+
+}

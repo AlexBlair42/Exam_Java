@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.jar.Attributes;
+import java.util.regex.*;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+
+import java.io.*;
+
+public class ReadFile extends DefaultHandler {
+	
+	private ArrayList<Category> categories = new ArrayList<Category>();
+	private String chars;
+	private Note currentNote;
+	
+	public ArrayList<Category> getCategories(){return categories;}
+	
+	public void startElement(String namespaceURI, String localName, String qName, Attributes atts){
+		if(localName.equals("c")){
+			Category c = new Category();
+			c.name = atts.getValue("name");
+			categories.add(c);
+		}
+		else if (localName.equals("n")){
+			currentNote = new Note();
+			currentNote.id = Integer.parseInt(atts.getValue("id"));
+			categories.get(categories.size()-1).notes.add(currentNote);
+			chars = "";
+		}
+	}
+    public void characters(char[] ch, int start, int length) {
+        chars = chars + new String(ch, start, length);
+    }
+
+    public void endElement(String uri, String localName, String qName) {
+        if (localName.equals("text"))
+            currentNote.text = chars.trim();
+        else if (localName.equals("media"))
+            currentNote.media = chars.trim();
+        else if (localName.equals("url"))
+            currentNote.url = chars.trim();
+    }
+public static void main(String[] args)
+{
+    try {
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+        spf.setNamespaceAware(true);
+        SAXParser saxParser = spf.newSAXParser();
+        XMLReader xmlrdr = saxParser.getXMLReader();
+        ReadFile noterdr = new ReadFile();
+        xmlrdr.setContentHandler(noterdr);
+        xmlrdr.parse("file:/C:/Users/ablair18/Desktop/shapes.xml");
+
+        ArrayList<Category> cs = noterdr.getCategories();
+        for (Category c: cs) {
+            System.out.printf("%s\n", c.name);
+            for (Note n: c.notes) {
+                System.out.printf("\t%s\n", n.text);
+            }
+        }
+    }
+    catch (Exception ex) { System.out.printf("Failed for %s\n", "shapes.xml");}
+
+}

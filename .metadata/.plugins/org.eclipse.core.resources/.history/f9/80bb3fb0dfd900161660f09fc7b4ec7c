@@ -1,0 +1,23 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class UI extends JComponent {
+	JFrame frame; 
+	
+	public UI(){
+	frame = new JFrame();
+	frame.setBounds(800,600,800,600);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setVisible(true);
+	
+	
+	JTextPane textPane = new JTextPane();
+	frame.getContentPane().add(textPane);
+	frame.getContentPane().add(new JButton("More Details"));
+	}
+	
+	public static void main(String[] args)
+	{
+		UI u = new UI();
+	}
+}

@@ -1,0 +1,38 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.net.URL;
+import java.awt.event.ActionEvent;
+
+public class UI extends JComponent {
+	JFrame frame; 
+	
+	public UI(){
+	frame = new JFrame();
+	frame.setBounds(600,600,600,600);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setVisible(true);
+	
+	try{
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		URL imgURL = getClass().getResource("https://crossfitsonora.files.wordpress.com/2013/10/pink-square.jpg");
+		Image img = toolkit.getImage(imgURL);
+	}
+	catch(Exception ex){;}
+	
+	JTextPane textPane = new JTextPane();
+	frame.getContentPane().add(textPane);
+	JButton button = new JButton("More Details");
+	button.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		}
+	});
+	frame.getContentPane().add(button, BorderLayout.CENTER);
+	}
+	
+	
+	public static void main(String[] args)
+	{
+		UI u = new UI();
+	}
+}
